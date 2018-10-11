@@ -76,6 +76,12 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!--声明式事务，aop实现-->
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
     <!-- 配置基于注解的声明式事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
