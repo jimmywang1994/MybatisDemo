@@ -1,4 +1,4 @@
-package ww.school.dao;
+package ww.school.mapper;
 
 public interface ITeacherMapper {
 }
