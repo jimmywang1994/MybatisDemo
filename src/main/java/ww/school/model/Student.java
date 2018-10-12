@@ -3,25 +3,34 @@ package ww.school.model;
 import java.io.Serializable;
 
 public class Student implements Serializable {
-    private String name;
-    private int no;
+    private String id;
+    private String sname;
+    private String sno;
     private String className;
     private String major;
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getNo() {
-        return no;
+    public String getSname() {
+        return sname;
     }
 
-    public void setNo(int no) {
-        this.no = no;
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
     }
 
     public String getClassName() {
@@ -38,5 +47,10 @@ public class Student implements Serializable {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    @Override
+    public String toString() {
+        return "姓名：" + this.getSname() + "学号：" + this.getSno() + "班级：" + this.getClassName() + "专业：" + this.getMajor();
     }
 }
