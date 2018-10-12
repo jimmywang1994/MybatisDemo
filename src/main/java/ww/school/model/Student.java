@@ -1,7 +1,13 @@
 package ww.school.model;
 
+import org.apache.ibatis.type.Alias;
+
 import java.io.Serializable;
 
+/**
+ * 使用别名
+ */
+@Alias("Student")
 public class Student implements Serializable {
     private String id;
     private String sname;
@@ -51,6 +57,6 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "姓名：" + this.getSname() + "学号：" + this.getSno() + "班级：" + this.getClassName() + "专业：" + this.getMajor();
+        return "姓名：" + this.getSname() + "; 学号：" + this.getSno() + "; 班级：" + this.getClassName() + "; 专业：" + this.getMajor();
     }
 }

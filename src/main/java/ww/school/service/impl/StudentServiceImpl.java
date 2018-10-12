@@ -8,6 +8,7 @@ import ww.school.model.Student;
 import ww.school.service.IStudentService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Service
@@ -19,5 +20,15 @@ public class StudentServiceImpl implements IStudentService {
     @Override
     public void insertStudent(Student student) {
         mapper.insertStudent(student);
+    }
+
+    @Override
+    public List<Student> getStudents() {
+        return mapper.getStudents();
+    }
+
+    @Override
+    public Student getStudentByNo(String sno) {
+        return mapper.getStudentByNo(sno);
     }
 }

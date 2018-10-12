@@ -8,6 +8,14 @@
         </selectKey>
         insert into Student(id,sno,sname,className,major) values(#{id},#{sno},#{sname},#{className},#{major})
     </insert>
-    <select id="selectStudent"></select>
+    <select id="getStudents" resultType="Student">
+        select * from Student
+    </select>
+    <select id="getStudentByNo" parameterType="String" resultType="Student">
+        select * from Student
+        <trim prefix="where">
+            sno=#{sno}
+        </trim>
+    </select>
     <delete id="deleteStudent"></delete>
 </mapper>
