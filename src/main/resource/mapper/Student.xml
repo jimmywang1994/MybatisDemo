@@ -12,10 +12,33 @@
         select * from Student
     </select>
     <select id="getStudentByNo" parameterType="String" resultType="Student">
-        select * from Student
-        <trim prefix="where">
-            sno=#{sno}
-        </trim>
+        select * from Student where sno = #{sno}
     </select>
-    <delete id="deleteStudent"></delete>
+
+    <select id="getStudentByLike" parameterType="String" resultType="Student">
+        <bind name="no" value="'%'+sno+'%'"/>
+        select * from Student where sno like #{no}
+    </select>
+
+    <select id="getStudentByIn" parameterType="list" resultType="Student">
+        select * from Student where sno in
+        <foreach collection="list" item="stus" open="(" separator="," close=")">
+            #{stus}
+        </foreach>
+    </select>
+    <!--使用map类型的resultMap-->
+    <select id="getStudentByMap" parameterType="Map" resultType="Student">
+        select * from Student where sno=#{sno} and sname=#{sname}
+    </select>
+    <!--简单分页-->
+    <select id="getStudentPage" parameterType="Map" resultType="Student">
+        select * from Student limit #{pageStart},#{pageSize}
+    </select>
+    <update id="updateStudent" parameterType="Student">
+        update Student set sname = #{sname} where sno = #{sno}
+
+    </update>
+    <delete id="deleteStudent" parameterType="String">
+        delete Student where sno=#{sno}
+    </delete>
 </mapper>

@@ -7,7 +7,6 @@
     <!--只扫描controller注解，不扫描Service注解-->
     <context:component-scan base-package="ww.school.*">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
 
     <!-- 配置数据库相关参数properties的属性：${url} -->
