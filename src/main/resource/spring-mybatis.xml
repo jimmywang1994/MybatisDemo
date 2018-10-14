@@ -62,6 +62,7 @@
         <property name="typeAliasesPackage" value="ww.school.model"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configLocation" value="classpath:sqlMapConfig.xml" />
     </bean>
     <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -78,6 +79,8 @@
     </bean>
 
     <!--声明式事务，aop实现-->
+    <!--isolation  事务隔离级别-->
+    <!--propagation  事务传播属性-->
     <tx:advice id="txAdvice">
         <tx:attributes>
             <tx:method name="get*" read-only="true"/>
