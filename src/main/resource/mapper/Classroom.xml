@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ww.school.mapper.IClassroomMapper">
-    <insert id="insertClassroom"></insert>
-    <select id="selectClassroom"></select>
+    <!--插入一个班级-->
+    <insert id="insertClassroom">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        insert into Classroom(id,cno,cname) values(#{id},#{cno},#{cname})
+    </insert>
+    <select id="selectClassroomById" parameterType="String" resultType="classroom">
+        select * from Classroom where id=#{0}
+    </select>
     <delete id="deleteClassroom"></delete>
+
+    <resultMap id="myMap" type="classroom">
+        <id column="id" property="id"/>
+        <result property="cno" column="cno"/>
+        <result property="cname" column="cname"/>
+        <collection property="students" select="ww.school.mapper.IStudentMapper.getStudentsByCid" column="id" ofType="student">
+
+        </collection>
+    </resultMap>
+    <select id="selectClassroomAll" resultMap="myMap">
+        select * from Classroom
+    </select>
 </mapper>

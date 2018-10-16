@@ -64,4 +64,9 @@ public class StudentServiceImpl implements IStudentService {
     public List<Student> getStudentByIn(List<String> snos) {
         return mapper.getStudentByIn(snos);
     }
+
+    @Override
+    public List<Student> selectAll() {
+        return mapper.selectAll();
+    }
 }

@@ -25,4 +25,6 @@ public interface IStudentMapper {
     void updateStudent(Map<String,String> paramMap);
 
     List<Student> getStudentByIn(List<String> snos);
+
+    List<Student> selectAll();
 }

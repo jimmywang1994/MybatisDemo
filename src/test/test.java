@@ -3,7 +3,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ww.school.mapper.IClassroomMapper;
 import ww.school.mapper.IStudentMapper;
+import ww.school.model.Classroom;
 import ww.school.model.Student;
 
 import java.util.ArrayList;
@@ -16,17 +18,20 @@ import java.util.Map;
 public class test {
     @Autowired
     private IStudentMapper mapper;
+    @Autowired
+    private IClassroomMapper classroomMapper;
 
     /**
-     * 插入一条记录j
+     * 插入一条记录
      */
     @Test
     public void insertStudent() {
         Student stu = new Student();
-        stu.setClassName("15网络2班");
-        stu.setSno("150403105");
+        stu.setClassName("15计算机3班");
+        stu.setSno("150407121");
         stu.setMajor("网络工程");
-        stu.setSname("张田");
+        stu.setSname("张建军");
+        stu.setCid("dfbadacdd07f11e8a0a22a928dc3dbeb");
         mapper.insertStudent(stu);
     }
 
@@ -74,7 +79,7 @@ public class test {
     public void updateStudent() {
         Map<String,String> map=new HashMap<>();
         map.put("sno","150402130");
-        map.put("sname","孟广至");
+        map.put("sname","张军");
         mapper.updateStudent(map);
     }
 
@@ -103,5 +108,31 @@ public class test {
         }
     }
 
+    @Test
+    public void insertClassroom(){
+        Classroom classroom=new Classroom();
+        classroom.setCno("15003");
+        classroom.setCname("15计算机3班");
+        classroomMapper.insertClassroom(classroom);
+    }
+
+    @Test
+    /**
+     * 查询所有学生，带上班级
+     */
+    public void getStudentAll(){
+        List<Student> students= mapper.selectAll();
+        System.out.println(students);
+    }
+
+
+    @Test
+    /**
+     * 查询所有班级以及班级中的学生
+     */
+    public void getClassroomAll(){
+        List<Classroom> classrooms=classroomMapper.selectClassroomAll();
+        System.out.println(classrooms);
+    }
 
 }

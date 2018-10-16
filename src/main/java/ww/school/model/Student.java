@@ -13,7 +13,26 @@ public class Student implements Serializable {
     private String sname;
     private String sno;
     private String className;
+    private String cid;
+    private Classroom classroom;
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
     private String major;
+
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
 
     public String getId() {
         return id;
@@ -57,6 +76,14 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "姓名：" + this.getSname() + "; 学号：" + this.getSno() + "; 班级：" + this.getClassName() + "; 专业：" + this.getMajor();
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", sname='" + sname + '\'' +
+                ", sno='" + sno + '\'' +
+                ", className='" + className + '\'' +
+                ", cid='" + cid + '\'' +
+                ", classroom=" + classroom +
+                ", major='" + major + '\'' +
+                '}';
     }
 }
