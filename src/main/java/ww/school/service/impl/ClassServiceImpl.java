@@ -20,4 +20,9 @@ public class ClassServiceImpl implements IClassService {
     public List<Classroom> selectClassroomAll() {
         return classroomMapper.selectClassroomAll();
     }
+
+    @Override
+    public List<Classroom> selectAll1() {
+        return classroomMapper.selectAll1();
+    }
 }

@@ -43,6 +43,7 @@
         select * from Student where sno like #{no}
     </select>
 
+    <!--select xxx where xxx in (..,..,..,)-->
     <select id="getStudentByIn" parameterType="list" resultType="Student">
         select * from Student where sno in
         <foreach collection="list" item="stus" open="(" separator="," close=")">

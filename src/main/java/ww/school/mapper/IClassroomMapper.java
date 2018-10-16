@@ -8,4 +8,6 @@ public interface IClassroomMapper {
     void insertClassroom(Classroom classroom);
 
     List<Classroom> selectClassroomAll();
+
+    List<Classroom> selectAll1();
 }

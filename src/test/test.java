@@ -27,11 +27,11 @@ public class test {
     @Test
     public void insertStudent() {
         Student stu = new Student();
-        stu.setClassName("15计算机3班");
-        stu.setSno("150407121");
+        stu.setClassName("15计算机2班");
+        stu.setSno("150403115");
         stu.setMajor("网络工程");
-        stu.setSname("张建军");
-        stu.setCid("dfbadacdd07f11e8a0a22a928dc3dbeb");
+        stu.setSname("顾宇杰");
+        stu.setCid("dfbadacdd07f11e8a0a22a9287894421");
         mapper.insertStudent(stu);
     }
 
@@ -58,7 +58,7 @@ public class test {
     @Test
     public void getStudentByLike() {
         List<Student> students = mapper.getStudentByLike("1504");
-        for (Student student:students){
+        for (Student student : students) {
             System.out.println(student.toString());
         }
     }
@@ -77,9 +77,9 @@ public class test {
 
     @Test
     public void updateStudent() {
-        Map<String,String> map=new HashMap<>();
-        map.put("sno","150402130");
-        map.put("sname","张军");
+        Map<String, String> map = new HashMap<>();
+        map.put("sno", "150402130");
+        map.put("sname", "张军");
         mapper.updateStudent(map);
     }
 
@@ -90,27 +90,27 @@ public class test {
         Map<String, Object> pageMap = new HashMap<>();
         pageMap.put("pageSize", pageSize);
         pageMap.put("pageStart", pageSize * (pageNum - 1));
-        List<Student> students=mapper.getStudentPage(pageMap);
-        for(Student student:students){
+        List<Student> students = mapper.getStudentPage(pageMap);
+        for (Student student : students) {
             System.out.println(student.toString());
         }
     }
 
     @Test
-    public void getStudentByIn(){
-        List<String> snos=new ArrayList<>();
+    public void getStudentByIn() {
+        List<String> snos = new ArrayList<>();
         snos.add("150403105");
         snos.add("150402130");
         snos.add("150403106");
-        List<Student> stus=mapper.getStudentByIn(snos);
-        for(Student student:stus){
+        List<Student> stus = mapper.getStudentByIn(snos);
+        for (Student student : stus) {
             System.out.println(student.toString());
         }
     }
 
     @Test
-    public void insertClassroom(){
-        Classroom classroom=new Classroom();
+    public void insertClassroom() {
+        Classroom classroom = new Classroom();
         classroom.setCno("15003");
         classroom.setCname("15计算机3班");
         classroomMapper.insertClassroom(classroom);
@@ -120,8 +120,8 @@ public class test {
     /**
      * 查询所有学生，带上班级
      */
-    public void getStudentAll(){
-        List<Student> students= mapper.selectAll();
+    public void getStudentAll() {
+        List<Student> students = mapper.selectAll();
         System.out.println(students);
     }
 
@@ -130,9 +130,21 @@ public class test {
     /**
      * 查询所有班级以及班级中的学生
      */
-    public void getClassroomAll(){
-        List<Classroom> classrooms=classroomMapper.selectClassroomAll();
+    public void getClassroomAll() {
+        List<Classroom> classrooms = classroomMapper.selectClassroomAll();
         System.out.println(classrooms);
     }
+
+    @Test
+    /**
+     * 查询所有班级以及班级中的学生 autoMapping模式
+     */
+    public void getClassroomAll1() {
+        List<Classroom> classrooms = classroomMapper.selectAll1();
+        for (Classroom classroom : classrooms) {
+            System.out.println(classroom);
+        }
+    }
+
 
 }

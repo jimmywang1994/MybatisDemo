@@ -24,4 +24,24 @@
     <select id="selectClassroomAll" resultMap="myMap">
         select * from Classroom
     </select>
+
+    <resultMap id="myMap1" type="classroom">
+        <id column="id" property="id"/>
+        <result column="cno" property="cno"/>
+        <result column="cname" property="cname"/>
+        <!--集合 ofType代表集合的泛型类型-->
+        <collection property="students" ofType="student">
+            <!--把这里看成一个小的resultMap-->
+            <id column="sid" property="id"/>
+            <result column="sno" property="sno"/>
+            <result column="sname" property="sname"/>
+            <result column="className" property="className"/>
+            <result column="major" property="major"/>
+            <result column="cid" property="cid"/>
+        </collection>
+    </resultMap>
+    <select id="selectAll1" resultMap="myMap1">
+      SELECT c.id id,s.id sid,s.sno,s.sname,s.className,s.major,s.cid cid,c.cno,c.cname
+          FROM Classroom c RIGHT JOIN Student s ON s.cid = c.id
+    </select>
 </mapper>

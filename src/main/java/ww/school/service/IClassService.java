@@ -10,4 +10,6 @@ public interface IClassService {
     void insertClassroom(Classroom classroom);
 
     List<Classroom> selectClassroomAll();
+
+    List<Classroom> selectAll1();
 }
