@@ -69,4 +69,9 @@ public class StudentServiceImpl implements IStudentService {
     public List<Student> selectAll() {
         return mapper.selectAll();
     }
+
+    @Override
+    public List<Student> selectAll2() {
+        return mapper.selectAll2();
+    }
 }

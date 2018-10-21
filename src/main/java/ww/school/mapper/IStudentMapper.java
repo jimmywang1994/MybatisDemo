@@ -27,4 +27,6 @@ public interface IStudentMapper {
     List<Student> getStudentByIn(List<String> snos);
 
     List<Student> selectAll();
+
+    List<Student> selectAll2();
 }

@@ -26,6 +26,11 @@
         select * from Student
     </select>
 
+    <!--单表AutoMapping-->
+    <select id="selectAll2" resultType="student">
+        select t.id,t.cid `Classroom.cid`,t.sno,t.sname,t.className `Classroom.className`,t.major,c.cno,c.cname from Student t
+            left join Classroom c on t.cid=c.id
+    </select>
 
     <select id="getStudentsByCid" parameterType="String" resultType="student">
         select * from Student where cid=#{0}

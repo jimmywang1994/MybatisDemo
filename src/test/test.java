@@ -125,6 +125,13 @@ public class test {
         System.out.println(students);
     }
 
+    @Test
+    public void getStudentAll2() {
+        List<Student> students = mapper.selectAll2();
+        for(Student student:students){
+            System.out.println(student);
+        }
+    }
 
     @Test
     /**

@@ -62,6 +62,7 @@
         <property name="typeAliasesPackage" value="ww.school.model"/>
         <!-- 扫描sql配置文件:mapper需要的xml文件 -->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--加上mybatis的全局配置文件-->
         <property name="configLocation" value="classpath:sqlMapConfig.xml" />
     </bean>
     <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
